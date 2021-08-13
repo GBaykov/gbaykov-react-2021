@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// const React = require('react');
-// const ReactDOM = require('react-dom');
-// import React from 'react'
-// import { render } from 'react-dom'
+import { Card, CardField } from './card';
+import { SearchBar } from './search-bar';
+import './style.scss'
 window.React = React;
 
-function Fear() {
-  return (<h1>Woohoo!</h1>);
+
+const App = () => {
+  return (
+    <div>
+<SearchBar/>
+<CardField/>
+    </div>
+
+  );
 }
 
 const tag = document.getElementById('root');
-console.log(React);
-console.log(ReactDOM);
-console.log(Fear);
-console.log(tag);
-ReactDOM.render(<Fear/>, tag);
+ReactDOM.render(<App/>, tag);

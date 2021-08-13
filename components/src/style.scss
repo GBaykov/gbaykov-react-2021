@@ -1,10 +1,24 @@
 body {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background-color: darkslategrey;
-  color: white;
+  background-color: rgb(63, 155, 155);
+  color: black;
   text-transform: uppercase;
+}
+
+.card{
+  border: 1px solid #380b81;
+  border-radius: 10px;
+  margin: 10px;
+}
+.card p{
+  border: 1px solid #380b81;
+  border-radius: 10px;
+}
+.card-field{
+  display: flex;
+  flex-wrap: wrap;
 }
