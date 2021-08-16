@@ -74,5 +74,6 @@ module.exports = ({ development }) => ({
   resolve: {
     extensions: ['.ts', '.js'],
   },
+
   ...devServer(development)
 });
