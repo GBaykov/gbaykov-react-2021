@@ -25,6 +25,6 @@ export const SearchBar = () => (
           name="s"
           className="form-control"
       />
-      <button type="submit">Search</button>
+      <button type="submit" className="submit">Search</button>
   </form>
 );
