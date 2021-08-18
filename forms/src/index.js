@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form } from './components/Form/form';
+import { Form } from './components/Form/form.jsx';
 // import { Card, CardField, MakeCardField } from './card';
 // import { SearchBar } from './search-bar';
-// import './style.scss'
+ import './style.scss'
  window.React = React;
 
 

@@ -1,0 +1,18 @@
+body{
+  background-color: #93e7e0;
+}
+
+.form{
+  margin: 0 auto;
+  min-width: 20%;
+  max-width: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1.5px solid rgb(68, 145, 145);
+  border-radius: 10px;
+  background-color: #52ddd2;
+}
+.submit{
+  display: block;
+  width: 5rem;
+}

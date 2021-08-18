@@ -20,7 +20,7 @@ module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: development ? 'inline-source-map' : false,
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js", "jsx"],
 },
   entry: {
     main: './src/index.js',
@@ -35,7 +35,13 @@ module.exports = ({ development }) => ({
       {
         test: /\.tsx?$/,
         use: ["babel-loader", "ts-loader", "tslint-loader"]
-    }, //c английского видоса
+    },
+    {
+      test: /\.jsx$/,
+      exclude: /node_modules/,
+      use: ['babel-loader']
+    },
+
       {
         test: /\.[tj]s$/,
         use: ["babel-loader", "ts-loader", "tslint-loader"],
@@ -72,7 +78,7 @@ module.exports = ({ development }) => ({
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
   ],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js','jsx'],
   },
 
   ...devServer(development)
