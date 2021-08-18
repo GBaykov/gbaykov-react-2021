@@ -4,16 +4,33 @@ import React, { useState, useEffect } from "react";
 {useState}
 
 
-export const Form = ()=> {
+export const Form = ({ setFormValues })=> {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [country, setCountry] = useState('Belarus');
   const [agree, setAgree] = useState(false);
+  const [errors, setErrors] = useState({})
+
+  useEffect(()=>{
+    validate()
+  },[agree,firstName, birthDate])
+
+  const validate = () => {
+    setErrors({});
+    if(!agree) {
+      setErrors((state)=> ([...state, agree]))
+    }
+  }
+
   const handleSubmit = (event)=>{
     event.preventDefault();
-    console.log(firstName)
+    if(Object.keys(errors).length===0){
+      setFormValues((state)=> [...state, {firstName,lastName,birthDate,country,agree}])
+    }
   }
+
+
   return(
     <form className="form" onSubmit={handleSubmit}>
       <label className='s.item ' htmlFor="firstName">

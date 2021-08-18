@@ -16,3 +16,12 @@ body{
   display: block;
   width: 5rem;
 }
+.card{
+  margin: 0 auto;
+  min-width: 20%;
+  max-width: 50px;
+}
+.card p{
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgb(46, 144, 236);
+}
