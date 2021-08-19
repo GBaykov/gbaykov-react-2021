@@ -8,23 +8,36 @@ export const Form = ({ setFormValues })=> {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
-  const [country, setCountry] = useState('Belarus');
+  const [country, setCountry] = useState('');
   const [agree, setAgree] = useState(false);
+  const [sex, setSex] = useState(false);
   const [errors, setErrors] = useState({})
 
   useEffect(()=>{
     validate()
     err()
-  },[agree,firstName, birthDate])
+  },[firstName,lastName, birthDate, country,sex, agree,])
+
+
 
   const validate = () => {
     setErrors({});
-    if(firstName === '') {
+    if(firstName.length < 3) {
       setErrors((state)=> ({state, firstName}))
+
+    }
+    if(lastName.length < 3) {
+      setErrors((state)=> ({state, lastName}))
     }
     if(birthDate === '') {
       setErrors((state)=> ({state, birthDate }))
     }
+    if(country === '') {
+      setErrors((state)=> ({state, country }))
+    }
+    // if(!sex) {
+    //   setErrors((state)=> ({state, sex }))
+    // }
     if(!agree) {
       setErrors((state)=> ({state, agree }))
     }
@@ -47,14 +60,15 @@ export const Form = ({ setFormValues })=> {
     event.preventDefault();
 
     if(Object.keys(errors).length===0){
-      setFormValues((state)=> [...state, {firstName,lastName,birthDate,country,agree}])
+      setFormValues((state)=> [...state, {firstName,lastName,birthDate,country,sex,agree}])
     }
   }
+
 
   return(
     <form className="form" onSubmit={handleSubmit}>
       <label className='s.item ' htmlFor="firstName">
-        <b>Name:</b>{errors.firstName === '' &&<span className='error-name'>*name should be filled</span>}
+        <b>Name:</b>{(firstName.length <3) &&<span className='error-name'>*name length should be 3+</span>}
         <input
           type="text"
           name="firstName"
@@ -65,7 +79,7 @@ export const Form = ({ setFormValues })=> {
           />
       </label>
       <label className={'s.item'} htmlFor="lastName">
-        <b>Surname:</b>
+        <b>Surname:</b>{lastName.length < 3 &&<span className='error-agree'>*surname length should be 3+</span>}
         <input
           type="text"
           name="lastName"
@@ -87,19 +101,32 @@ export const Form = ({ setFormValues })=> {
           />
       </label>
       <label className={'s.item'} htmlFor="country">
-        <b>Country:</b>
+        <b>Country:</b>{errors.country === '' &&<span className='error-name'>*country should be filled</span>}
         <select
           name="country"
           value={country}
           onChange ={(event)=>{
                          setCountry(event.target.value)
           }}>
+             <option></option>
              <option>Russia</option>
              <option>Belarus</option>
              <option>Ukraine</option>
           </select>
       </label>
-      <label className={'s.agree'} htmlFor="agree">
+
+      <label className="checkbox-green">
+        <b>Choose your sex:</b>{errors.sex !==undefined && <span className='error-agree'>***</span>}
+	      <input
+        type="checkbox"
+        name="sex"
+        checked={sex}
+        onChange ={()=> setSex(prev => !prev) }
+        />
+	       <span className="checkbox-green-switch" data-label-on="Female" data-label-off="Male"></span>
+      </label>
+
+      <label className='agree' htmlFor="agree">
         <p>this box i agree...{errors.agree !==undefined && <span className='error-agree'>*agree should be checked</span>}</p>
         <input
           type="checkbox"
