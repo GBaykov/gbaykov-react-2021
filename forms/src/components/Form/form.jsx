@@ -15,7 +15,7 @@ export const Form = ({ setFormValues })=> {
 
   useEffect(()=>{
     validate()
-    err()
+
   },[firstName,lastName, birthDate, country,sex, agree,])
 
 
@@ -43,17 +43,13 @@ export const Form = ({ setFormValues })=> {
     }
 
   }
-  const err = () => {
-    // if(errors.agree !== undefined) {
-    //   console.log(` ${errors.agree} !== undefined`)
-    // }else console.log(`errors.agree === ${errors.agree}`) ;
-
-    // if(errors.firstName == '') {
-    //   console.log(`${errors.firstName} == ''`)
-    // }else console.log(`errors.firstName === ${errors.firstName}`) ;
-    // if(errors.birthDate == '') {
-    //   console.log(`errors.birthDate !== ${errors.birthDate}`)
-    // } else console.log(`errors.birthDate === ${errors.birthDate}`) ;
+  const reset = () => {
+   setFirstName('');
+   setLastName('')
+   setBirthDate('');
+   setCountry('');
+   setSex(false);
+   setAgree(false)
   }
 
   const handleSubmit = (event)=>{
@@ -61,6 +57,7 @@ export const Form = ({ setFormValues })=> {
 
     if(Object.keys(errors).length===0){
       setFormValues((state)=> [...state, {firstName,lastName,birthDate,country,sex,agree}])
+      reset()
     }
   }
 
