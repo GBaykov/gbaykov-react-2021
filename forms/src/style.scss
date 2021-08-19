@@ -14,14 +14,25 @@ body{
 }
 .submit{
   display: block;
-  width: 5rem;
+  width: 7rem;
 }
 .card{
+  border:2px solid rgb(18, 10, 141);
   margin: 0 auto;
   min-width: 20%;
   max-width: 50px;
+  margin-bottom: 5px;
 }
 .card p{
   margin-bottom: 5px;
   border-bottom: 1px solid rgb(46, 144, 236);
+}
+.error-agree{
+  color: rgb(177, 14, 14);
+}
+.error-name{
+  color: rgb(177, 14, 14);
+}
+.error-date{
+  color: rgb(177, 14, 14);
 }

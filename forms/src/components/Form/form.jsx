@@ -1,7 +1,7 @@
 //import s from './Form.module.css'
 import React, { useState, useEffect } from "react";
 
-{useState}
+
 
 
 export const Form = ({ setFormValues })=> {
@@ -14,27 +14,47 @@ export const Form = ({ setFormValues })=> {
 
   useEffect(()=>{
     validate()
+    err()
   },[agree,firstName, birthDate])
 
   const validate = () => {
     setErrors({});
-    if(!agree) {
-      setErrors((state)=> ([...state, agree]))
+    if(firstName === '') {
+      setErrors((state)=> ({state, firstName}))
     }
+    if(birthDate === '') {
+      setErrors((state)=> ({state, birthDate }))
+    }
+    if(!agree) {
+      setErrors((state)=> ({state, agree }))
+    }
+
+  }
+  const err = () => {
+    // if(errors.agree !== undefined) {
+    //   console.log(` ${errors.agree} !== undefined`)
+    // }else console.log(`errors.agree === ${errors.agree}`) ;
+
+    // if(errors.firstName == '') {
+    //   console.log(`${errors.firstName} == ''`)
+    // }else console.log(`errors.firstName === ${errors.firstName}`) ;
+    // if(errors.birthDate == '') {
+    //   console.log(`errors.birthDate !== ${errors.birthDate}`)
+    // } else console.log(`errors.birthDate === ${errors.birthDate}`) ;
   }
 
   const handleSubmit = (event)=>{
     event.preventDefault();
+
     if(Object.keys(errors).length===0){
       setFormValues((state)=> [...state, {firstName,lastName,birthDate,country,agree}])
     }
   }
 
-
   return(
     <form className="form" onSubmit={handleSubmit}>
       <label className='s.item ' htmlFor="firstName">
-        <b>Name:</b>
+        <b>Name:</b>{errors.firstName === '' &&<span className='error-name'>*name should be filled</span>}
         <input
           type="text"
           name="firstName"
@@ -56,7 +76,7 @@ export const Form = ({ setFormValues })=> {
         />
       </label>
       <label className={'s.item'} htmlFor="birthDate">
-        <b>Birth Date:</b>
+        <b>Birth Date:</b>{errors.birthDate === '' &&<span className='error-date'>*date should be filled</span>}
         <input
           type="date"
           name="birthDate"
@@ -80,12 +100,13 @@ export const Form = ({ setFormValues })=> {
           </select>
       </label>
       <label className={'s.agree'} htmlFor="agree">
-        <b>this box i agree...</b>
+        <p>this box i agree...{errors.agree !==undefined && <span className='error-agree'>*agree should be checked</span>}</p>
         <input
           type="checkbox"
           name="agree"
           checked={agree}
           onChange ={()=> setAgree(prev => !prev) }
+          //onChange ={()=> agree() }
           />
       </label>
       <div className='submit'>
@@ -94,3 +115,10 @@ export const Form = ({ setFormValues })=> {
     </form>
   )
 }
+
+// const Agree = () => {
+
+//    if(errors!== undefined){
+//     return <span className='error-agree'>*agree should be checked</span>
+//    }
+// }

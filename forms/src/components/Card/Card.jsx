@@ -5,11 +5,10 @@ import ReactDOM from 'react-dom';
 export const Card = ({item}) => {
   return (
     <div className='card'>
-      <p> {item.firstName}</p>
-      <p> {item.lastName}</p>
-      <p> {item.birthDate}</p>
-      <p> {item.country}</p>
-      <p> {item.agree}</p>
+      <p>firstName: {item.firstName}</p>
+      <p>lastName: {item.lastName}</p>
+      <p>birthDate: {item.birthDate}</p>
+      <p>country: {item.country}</p>
     </div>
 
   );
