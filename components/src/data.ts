@@ -1,4 +1,3 @@
-
 export type CARD = {
   category: string,
   word: string,
@@ -737,7 +736,6 @@ export const DATA_OF_CARDS:CATEGORY[] = [
     },
   ],
 ];
-
 
 export const DATA_OF_CATEGORIES = [
   {
