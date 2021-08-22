@@ -18,7 +18,7 @@ export const SearchBar = () => (
   <form action="/" method="get" className="form-group">
     <label htmlFor="header-search">
       <span className="visually-hidden">Search blog posts</span>
-    </label>
+
     <input
       type="text"
       id="header-search"
@@ -26,6 +26,7 @@ export const SearchBar = () => (
       name="s"
       className="form-control"
     />
+    </label>
     <button type="submit" className="submit">Search</button>
   </form>
 );
