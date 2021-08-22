@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM, { render } from 'react-dom';
-import { AUDIO_URL, IMG_URL } from './constants';
-import { DATA_OF_CARDS } from './data';
+import { AUDIO_URL, IMG_URL } from '../constants';
+import { DATA_OF_CARDS } from '../data';
 
 window.React = React;
 
