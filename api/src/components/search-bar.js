@@ -8,12 +8,14 @@ import { Articles } from './articles';
 
 
 window.React = React;
+'relevancy','popularity', 'publishedAt'
 
 const API_KEY = '6acc09f802644746b9fafbaed30a3d6'
 export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');//useState<string>('') и тд
   const [isLoading, setIsLoading] = useState(false);
-  const [arts, setArts] = useState([])
+  const [arts, setArts] = useState([]);
+  const [sortBy, setSortBy] = useState('unsorted');
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
@@ -54,8 +56,36 @@ console.error(e)
       <button type="submit" className="submit" disabled={isLoading}>
         {isLoading ? 'Loading...' : ' Search'}
       </button>
+      <div>
+        <label>
+          relevancy
+          <input
+          type='radio'
+          value={'relevancy'}
+          checked={sortBy==='relevancy'}
+          onChange={()=>{setSortBy('relevancy')}} />
+        </label>
+        <label>
+        popularity
+          <input
+          type='radio'
+          value='popularity'
+          checked={sortBy==='popularity'}
+          onChange={()=>{setSortBy('popularity')}} />
+        </label>
+        <label>
+        publishedAt
+          <input
+          type='radio'
+          value='publishedAt'
+          checked={sortBy==='publishedAt'}
+          onChange={()=>{setSortBy('publishedAt')}} />
+        </label>
+      </div>
+
+
     </form>
-    <Articles articles={arts}/>
+    {/* <Articles articles={arts}/> */}
     {/* здесь ошибка  */}
     </div>
     )
