@@ -31,7 +31,7 @@ export const SearchBar = () => {
      const response = await axios.get(
        `v2/everything?q=${searchValue}&apiKey=${API_KEY}&sortBy=${sortBy}&from=${from}&pageSize=10&page=${page}`) //:AxiosResponse<any>
     setArts(response.data.articles);
-    alert(arts)
+
 } catch(e) { //e:AxiosError<any>
 console.error(e)
     } finally {
@@ -118,19 +118,13 @@ console.error(e)
      setArtPage(page)
    }, [page])
 
-  //  const handleChange = (e)=>{
-  //    const { value } = e.target
-  //    const regExp = /d+/;
-  //    const matchedValue = value.match(regExp)
-  //    if(matchedValue) {
-  //      onChangePage(+matchedValue[0])
-  //    } else {
-  //      setArtPage('')
-  //    }
-  //  }
+   const handleChange = (e)=>{
+      const { value } = e.target;
+       onChangePage(value)
+   }
 
     return(
-    <div> homeHOME
+    <div>
       <table>
         <tr>
           <td>Title</td>
@@ -138,20 +132,20 @@ console.error(e)
           <td>Published at</td>
           <td>image</td>
         </tr>
-       { articles.map(({author, title, discription, publishedArt,urlToImage},index)=> {
+       { articles.map(({author, title, discription, publishedAt,urlToImage},index)=> {
   return(
   <tr key={index}>
     <td>{title}</td>
     <td>{author}</td>
-    <td>{publishedArt}</td>
+    <td>{publishedAt}</td>
     <td>
-    <img width={240} height={360} src={urlToImage} alt={title}/>
+    <img width={150} height={150} src={urlToImage} alt={title}/>
     </td>
   </tr> )
         })}
       </table>
       <lable >
-        {/* <input type='text' value={artPage} onChange={handleChange}/> */}
+        <input  type="number" value={artPage} onChange={handleChange} />
       </lable>
 
     </div>)
