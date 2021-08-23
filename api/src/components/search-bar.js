@@ -21,7 +21,9 @@ export const SearchBar = () => {
   const [page, setPage] = useState(1);
 
   const handleSubmit = async(e) =>{
+    alert('!!!!!!!!!!!')
     e.preventDefault();
+
     setIsLoading(true);
     try{ //1)ПРОВЕРИТЬ  начиная с эого блока 52.19
      const response = await axios.get(
@@ -94,8 +96,9 @@ console.error(e)
          <input type='date'/>
        </div>
     </form>
-    {/* <Articles articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}/> */}
+    {/* <Articles articles={arts} /> */}
     {/* здесь ошибка  */}
     </div>
     )
   };
+  // page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}

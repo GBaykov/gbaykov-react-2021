@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { MakeCardField } from './components/card';
 import { SearchBar } from './components/search-bar';
 import './style.scss';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 window.React = React;
 

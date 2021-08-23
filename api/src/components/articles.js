@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import React from ("react");
 
-export const Articles = ({articles, page, onChangePage}) =>{
+export const Articles = () =>{
 
-  const [artPage, setArtPage] = useState('');
+//   const [artPage, setArtPage] = useState('');
+//   const {articles, page, onChangePage} = props;
 
- useEffect(()=>{
-   setArtPage(page)
- }, [page])
+//  useEffect(()=>{
+//    setArtPage(page)
+//  }, [page])
 
- const handleChange = (e)=>{
-   const { value } = e.target
-   const regExp = /d+/;
-   const matchedValue = value.match(regExp)
-   if(matchedValue) {
-     onChangePage(+matchedValue[0])
-   } else {
-     setArtPage('')
-   }
+//  const handleChange = (e)=>{
+//    const { value } = e.target
+//    const regExp = /d+/;
+//    const matchedValue = value.match(regExp)
+//    if(matchedValue) {
+//      onChangePage(+matchedValue[0])
+//    } else {
+//      setArtPage('')
+//    }
 
- }
+//  }
 
   return(
   <div>
-    <table>
+    {/* <table>
       <tr>
         <td>Title</td>
         <td>Author</td>
@@ -44,7 +45,7 @@ return(
     </table>
     <lable >
       <input type='text' value={artPage} onChange={handleChange}/>
-    </lable>
+    </lable> */}
 
   </div>)
 }
