@@ -1,16 +1,18 @@
-import React, { FC, useState, Component } from 'react';
+import React, { FC, useState,useEffect, Component } from 'react';
 import ReactDOM from 'react-dom';
 //NEWS Api
 //TO Do axios
 //import axiosInstance from '../services/api';
 import axios from '../services/api'; //111111   npm i axios
 import { Articles } from './articles';
+import { MakeCardField } from './card';
+import { Home, Table } from './test';
 
 
 window.React = React;
 'relevancy','popularity', 'publishedAt'
 
-const API_KEY = '6acc09f802644746b9fafbaed30a3d6'
+const API_KEY = '8bfe103c43b54bbd99756e68af3a7cb3'
 export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');//useState<string>('') и тд
   const [isLoading, setIsLoading] = useState(false);
@@ -21,18 +23,20 @@ export const SearchBar = () => {
   const [page, setPage] = useState(1);
 
   const handleSubmit = async(e) =>{
-    alert('!!!!!!!!!!!')
+
     e.preventDefault();
 
     setIsLoading(true);
     try{ //1)ПРОВЕРИТЬ  начиная с эого блока 52.19
      const response = await axios.get(
        `v2/everything?q=${searchValue}&apiKey=${API_KEY}&sortBy=${sortBy}&from=${from}&pageSize=10&page=${page}`) //:AxiosResponse<any>
-    setArts(response.data.articles)
+    setArts(response.data.articles);
+    alert(arts)
 } catch(e) { //e:AxiosError<any>
 console.error(e)
     } finally {
       setIsLoading(false)
+
     }
   }  //e: ChangeEvent<HTMLFormElement>
 
@@ -96,9 +100,59 @@ console.error(e)
          <input type='date'/>
        </div>
     </form>
-    {/* <Articles articles={arts} /> */}
+    <Table1 articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}/>
+    {/* <MakeCardField/> */}
+    {/* {<Table />} */}
+    {/* <Articles  /> */}
     {/* здесь ошибка  */}
     </div>
     )
   };
-  // page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}
+  // articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}
+  export const Table1 = ({articles, page, onChangePage}) =>{
+
+    const [artPage, setArtPage] = useState('');
+    // const {articles, page, onChangePage} = props;
+
+   useEffect(()=>{
+     setArtPage(page)
+   }, [page])
+
+  //  const handleChange = (e)=>{
+  //    const { value } = e.target
+  //    const regExp = /d+/;
+  //    const matchedValue = value.match(regExp)
+  //    if(matchedValue) {
+  //      onChangePage(+matchedValue[0])
+  //    } else {
+  //      setArtPage('')
+  //    }
+  //  }
+
+    return(
+    <div> homeHOME
+      <table>
+        <tr>
+          <td>Title</td>
+          <td>Author</td>
+          <td>Published at</td>
+          <td>image</td>
+        </tr>
+       { articles.map(({author, title, discription, publishedArt,urlToImage},index)=> {
+  return(
+  <tr key={index}>
+    <td>{title}</td>
+    <td>{author}</td>
+    <td>{publishedArt}</td>
+    <td>
+    <img width={240} height={360} src={urlToImage} alt={title}/>
+    </td>
+  </tr> )
+        })}
+      </table>
+      <lable >
+        {/* <input type='text' value={artPage} onChange={handleChange}/> */}
+      </lable>
+
+    </div>)
+  }
