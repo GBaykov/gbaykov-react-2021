@@ -1,7 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from ("react");
 
-export const Articles = ({articles}) =>{
+export const Articles = ({articles, page, onChangePage}) =>{
+
+  const [artPage, setArtPage] = useState('');
+
+ useEffect(()=>{
+   setArtPage(page)
+ }, [page])
+
+ const handleChange = (e)=>{
+   const { value } = e.target
+   const regExp = /d+/;
+   const matchedValue = value.match(regExp)
+   if(matchedValue) {
+     onChangePage(+matchedValue[0])
+   } else {
+     setArtPage('')
+   }
+
+ }
 
   return(
   <div>
@@ -24,5 +42,9 @@ return(
 </tr> )
       })}
     </table>
+    <lable >
+      <input type='text' value={artPage} onChange={handleChange}/>
+    </lable>
+
   </div>)
 }

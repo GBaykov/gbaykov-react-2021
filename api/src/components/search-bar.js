@@ -16,12 +16,16 @@ export const SearchBar = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [arts, setArts] = useState([]);
   const [sortBy, setSortBy] = useState('unsorted');
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const [page, setPage] = useState(1);
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
     setIsLoading(true);
     try{ //1)ПРОВЕРИТЬ  начиная с эого блока 52.19
-     const response = await axios.get(`v2/everything?q=${searchValue}&apiKey=${API_KEY}`) //:AxiosResponse<any>
+     const response = await axios.get(
+       `v2/everything?q=${searchValue}&apiKey=${API_KEY}&sortBy=${sortBy}&from=${from}&pageSize=10&page=${page}`) //:AxiosResponse<any>
     setArts(response.data.articles)
 } catch(e) { //e:AxiosError<any>
 console.error(e)
@@ -82,10 +86,15 @@ console.error(e)
           onChange={()=>{setSortBy('publishedAt')}} />
         </label>
       </div>
-
-
+{/* 1:51  конец сортировки. Предложение расширить сортировку */}
+       <div>
+         <p>from</p>
+         <input type='date'/>
+         <p>to</p>
+         <input type='date'/>
+       </div>
     </form>
-    {/* <Articles articles={arts}/> */}
+    {/* <Articles articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}/> */}
     {/* здесь ошибка  */}
     </div>
     )
