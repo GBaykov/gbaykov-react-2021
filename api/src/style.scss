@@ -2,23 +2,25 @@ body {
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
-  background-color: rgb(114, 235, 235);
+  background-color: rgb(111, 138, 138);
   color: black;
   text-transform: uppercase;
 }
 .form-group{
+  margin-top: 50px;
   border: 2px solid rgb(242, 236, 245);
-  width: 320px;
-  background-color: #dac5fd;
+  width: 420px;
+  background-color: #aa9cc2;
 }
 .form-control{
   background-color: #cecbd3;
-  width: 300px;
+  width: 400px;
   border: 2px solid #540ec4;
   border-radius: 50px;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 .submit{
   background-color: #ece7f5;
@@ -35,40 +37,73 @@ body {
 
 
 
-.cards-field{
-  width: 90%;
-  min-height: 100%;
-  display: flex;
+// .cards-field{
+//   width: 90%;
+//   min-height: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+// }
+
+
+// .card {
+//   position: relative;
+//   width: 14rem;
+//   height: 16rem;
+//   cursor: pointer;
+//   transform-style: preserve-3d;
+//   transform-origin: right;
+//   transition: all .5s;
+//   border-radius: .5rem;
+//   border: 1px solid #380b81;
+//   margin: 10px;
+// }
+
+
+
+// .card-text-container{
+// display: flex;
+// flex-direction: row;
+// flex-wrap: wrap;
+// justify-content: space-around;
+// }
+// .card-img{
+//   border-radius: .5rem;
+//   width: 13.9rem;
+//   height:10rem;
+// }
+
+
+.table{
+  width: 80%;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // border: 1px solid rgb(80, 10, 10);
+  // background-color: rgb(142, 192, 134);
+}
+.thead{
+  border: 2px solid rgb(18, 19, 29);
+  background-color: rgb(153, 175, 150);
+}
+.tbody{
+  border: 1px solid rgb(26, 16, 16);
+  background-color: rgb(149, 173, 145);
+}
+.td{
+  border: 1px solid rgb(26, 16, 16);
+}
+tr{
+  border: 1px solid rgb(26, 16, 16);
 }
 
-
-.card {
-  position: relative;
-  width: 14rem;
-  height: 16rem;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transform-origin: right;
-  transition: all .5s;
-  border-radius: .5rem;
-  border: 1px solid #380b81;
-  margin: 10px;
+.radio-label{
+  margin: 5px;
+  border: 0.5px solid rgb(80, 10, 10);
 }
-
-
-
-.card-text-container{
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around;
-}
-.card-img{
-  border-radius: .5rem;
-  width: 13.9rem;
-  height:10rem;
+.form-head{
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }

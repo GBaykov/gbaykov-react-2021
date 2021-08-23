@@ -1,9 +1,6 @@
 import React, { FC, useState,useEffect, Component } from 'react';
 import ReactDOM from 'react-dom';
-//NEWS Api
-//TO Do axios
-//import axiosInstance from '../services/api';
-import axios from '../services/api'; //111111   npm i axios
+import axios from '../services/api';
 import { Articles } from './articles';
 import { MakeCardField } from './card';
 import { Home, Table } from './test';
@@ -29,7 +26,7 @@ export const SearchBar = () => {
     setIsLoading(true);
     try{ //1)ПРОВЕРИТЬ  начиная с эого блока 52.19
      const response = await axios.get(
-       `v2/everything?q=${searchValue}&apiKey=${API_KEY}&sortBy=${sortBy}&from=${from}&pageSize=10&page=${page}`) //:AxiosResponse<any>
+       `v2/everything?q=${searchValue}&apiKey=${API_KEY}&sortBy=${sortBy}&from=${from}&to=${to}&pageSize=10&page=${page}`) //:AxiosResponse<any>
     setArts(response.data.articles);
 
 } catch(e) { //e:AxiosError<any>
@@ -52,7 +49,7 @@ console.error(e)
      onSubmit={handleSubmit}
     >
       <label htmlFor="header-search">
-        <span className="visually-hidden">Search blog posts</span>
+        <span className="form-head">Search blog posts</span>
       <input
         type="text"
         id="header-search"
@@ -67,7 +64,7 @@ console.error(e)
         {isLoading ? 'Loading...' : ' Search'}
       </button>
       <div>
-        <label>
+        <label className='radio-label'>
           relevancy
           <input
           type='radio'
@@ -75,7 +72,7 @@ console.error(e)
           checked={sortBy==='relevancy'}
           onChange={()=>{setSortBy('relevancy')}} />
         </label>
-        <label>
+        <label className='radio-label'>
         popularity
           <input
           type='radio'
@@ -83,8 +80,8 @@ console.error(e)
           checked={sortBy==='popularity'}
           onChange={()=>{setSortBy('popularity')}} />
         </label>
-        <label>
-        publishedAt
+        <label className='radio-label'>
+        published At
           <input
           type='radio'
           value='publishedAt'
@@ -95,24 +92,23 @@ console.error(e)
 {/* 1:51  конец сортировки. Предложение расширить сортировку */}
        <div>
          <p>from</p>
-         <input type='date'/>
+         <input type='date'
+          onChange={()=>{setFrom('from')}} />
          <p>to</p>
-         <input type='date'/>
+         <input type='date'
+         onChange={(dateTo)=> setTo(dateTo)}/>
        </div>
     </form>
     <Table1 articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}/>
-    {/* <MakeCardField/> */}
     {/* {<Table />} */}
     {/* <Articles  /> */}
-    {/* здесь ошибка  */}
+    {/* здесь ошибка. Почему-то импорты с других файлов багуют и не работают  */}
     </div>
     )
   };
-  // articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}
   export const Table1 = ({articles, page, onChangePage}) =>{
 
     const [artPage, setArtPage] = useState('');
-    // const {articles, page, onChangePage} = props;
 
    useEffect(()=>{
      setArtPage(page)
@@ -125,28 +121,31 @@ console.error(e)
 
     return(
     <div>
-      <table>
-        <tr>
-          <td>Title</td>
-          <td>Author</td>
-          <td>Published at</td>
-          <td>image</td>
+      <table className='table'>
+        <thead className='thead'>
+          <tr>
+          <td className='td'>Title</td>
+          <td className='td'>Author</td>
+          <td className='td'>Published at</td>
+          <td className='td'>image</td>
         </tr>
+        </thead>
+        <tbody className='tbody'>
        { articles.map(({author, title, discription, publishedAt,urlToImage},index)=> {
   return(
   <tr key={index}>
-    <td>{title}</td>
-    <td>{author}</td>
-    <td>{publishedAt}</td>
-    <td>
+    <td className='td'>{title}</td>
+    <td className='td'>{author}</td>
+    <td className='td'>{publishedAt}</td>
+    <td className='td'>
     <img width={150} height={150} src={urlToImage} alt={title}/>
     </td>
   </tr> )
         })}
+        </tbody>
       </table>
-      <lable >
+      <lable>
         <input  type="number" value={artPage} onChange={handleChange} />
       </lable>
-
     </div>)
   }
