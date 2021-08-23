@@ -41,6 +41,16 @@ console.error(e)
     const { value } = e.target;
     setSearchValue(value)
   }
+
+  const setFromDate = (e) =>{
+  const {value} = e.target;
+  setFrom(value)
+}
+const setToDate = (e) =>{
+  const {value} = e.target;
+  setTo(value)
+}
+
   return(
   <div>
     <form action="/"
@@ -93,10 +103,10 @@ console.error(e)
        <div>
          <p>from</p>
          <input type='date'
-          onChange={()=>{setFrom('from')}} />
+          onChange={setFromDate} />
          <p>to</p>
          <input type='date'
-         onChange={(dateTo)=> setTo(dateTo)}/>
+         onChange={setToDate}/>
        </div>
     </form>
     <Table1 articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}/>
