@@ -1,6 +1,6 @@
 {
-  "name": "empty_project",
-  "version": "0.0.0",
+  "name": "api",
+  "version": "0.0.1",
   "description": "Empty project template",
   "private": true,
   "scripts": {
@@ -33,6 +33,7 @@
     "@typescript-eslint/parser": "^4.22.0",
     "autoprefixer": "^9.0.2",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -42,7 +43,7 @@
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
-    "eslint": "^7.25.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-webpack-plugin": "^2.5.4",

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import React from ("react");
+import React from "react";
 import ReactDOM, { render } from 'react-dom';
 import { AUDIO_URL, IMG_URL } from '../constants';
 import { DATA_OF_CARDS } from '../data';

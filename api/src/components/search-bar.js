@@ -1,13 +1,9 @@
-import React, { FC, useState,useEffect, Component } from 'react';
-import ReactDOM from 'react-dom';
-import axios from '../services/api';
-import { Articles } from './articles';
-import { MakeCardField } from './card';
-import { Home, Table } from './test';
+import React, { useState, useEffect } from 'react';
 
+import axios from '../services/api';
 
 window.React = React;
-'relevancy','popularity', 'publishedAt'
+//'relevancy','popularity', 'publishedAt'
 
 const API_KEY = '8bfe103c43b54bbd99756e68af3a7cb3'
 export const SearchBar = () => {

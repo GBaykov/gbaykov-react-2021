@@ -20,7 +20,7 @@ module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: development ? 'inline-source-map' : false,
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js",".jsx"],
 },
   entry: {
     main: './src/index.js',
@@ -72,7 +72,7 @@ module.exports = ({ development }) => ({
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
   ],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', 'jsx','tsx'],
   },
   ...devServer(development)
 });
