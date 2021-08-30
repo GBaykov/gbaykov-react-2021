@@ -6,6 +6,7 @@ window.React = React;
 //'relevancy','popularity', 'publishedAt'
 
 const API_KEY = '8bfe103c43b54bbd99756e68af3a7cb3'
+
 export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');//useState<string>('') и тд
   const [isLoading, setIsLoading] = useState(false);
