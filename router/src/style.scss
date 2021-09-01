@@ -37,43 +37,49 @@ body {
 
 
 
-// .cards-field{
-//   width: 90%;
-//   min-height: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-// }
+.cards-field{
+  width: 90%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 
-// .card {
-//   position: relative;
-//   width: 14rem;
-//   height: 16rem;
-//   cursor: pointer;
-//   transform-style: preserve-3d;
-//   transform-origin: right;
-//   transition: all .5s;
-//   border-radius: .5rem;
-//   border: 1px solid #380b81;
-//   margin: 10px;
-// }
+.card {
+  position: relative;
+  width: 14rem;
+  height: 16rem;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: right;
+  transition: all .5s;
+  border-radius: .5rem;
+  border: 1px solid #380b81;
+  margin: 10px;
+}
 
 
 
-// .card-text-container{
-// display: flex;
-// flex-direction: row;
-// flex-wrap: wrap;
-// justify-content: space-around;
-// }
-// .card-img{
-//   border-radius: .5rem;
-//   width: 13.9rem;
-//   height:10rem;
-// }
+.card-text-container{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.card-img{
+  border-radius: .5rem;
+  width: 23.9rem;
+  height:18rem;
+}
+.details-fild{
+  padding: 10px;
+  margin: 20px;
+  border-left: 5px solid #340b75;
+  font-size:larger
+}
 
 
 .table{

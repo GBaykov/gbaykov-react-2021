@@ -12,9 +12,9 @@ import { Details } from './details';
 window.React = React;
 //'relevancy','popularity', 'publishedAt'
 
-const API_KEY = '8bfe103c43b54bbd99756e68af3a7cb3'
+export const API_KEY = '8bfe103c43b54bbd99756e68af3a7cb3'
 
-export const SearchBar = ({topArticle}) => {
+export const SearchBar = () => {
 
 
 
@@ -28,7 +28,7 @@ export const SearchBar = ({topArticle}) => {
   const [tit, setTit] = useState('');
 
   const addArtic = (title)=>{
-    topArticle(title);
+    //topArticle(title);
     setTit(title)
   }
 
@@ -170,17 +170,12 @@ const clickHandler = ()=>{
           setTitle(title)
          }
 
-         const sendTitle = () =>{
-           console.log(title)
-         }
+
          //to={`/details/${index}`}
   return(
   <tr key={index} onClick={clickHandler}>
     <td className='td'  onClick={onClick}>
-      <Link to={{
-            pathname: `/details/${title}`,
-            title: title
-        }} exact sendTitle={sendTitle} title={title}> {title} </Link>
+      <Link to={`/details/${title}`} exact  > {title} </Link>
     </td>
     <td className='td'>{author}</td>
     <td className='td'>{publishedAt}</td>

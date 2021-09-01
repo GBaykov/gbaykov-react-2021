@@ -83,7 +83,7 @@ export default function App() {
             <Details/>
           </Route>
           <Route path="/">
-            <SearchBar topArticle={addArtic} />
+            <SearchBar  />
           </Route>
         </Switch>
       </div>
