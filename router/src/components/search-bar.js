@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router,
+  Route,
+  Switch,Link,
+  useRouteMatch,
+  useParams
+ } from 'react-router-dom';
 
 import axios from '../services/api';
+import { Details } from './details';
 
 window.React = React;
 //'relevancy','popularity', 'publishedAt'
 
 const API_KEY = '8bfe103c43b54bbd99756e68af3a7cb3'
 
-export const SearchBar = () => {
+export const SearchBar = ({topArticle}) => {
+
+
+
   const [searchValue, setSearchValue] = useState('');//useState<string>('') и тд
   const [isLoading, setIsLoading] = useState(false);
   const [arts, setArts] = useState([]);
@@ -15,6 +25,12 @@ export const SearchBar = () => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [page, setPage] = useState(1);
+  const [tit, setTit] = useState('');
+
+  const addArtic = (title)=>{
+    topArticle(title);
+    setTit(title)
+  }
 
   const handleSubmit = async(e) =>{
 
@@ -106,16 +122,21 @@ const setToDate = (e) =>{
          onChange={setToDate}/>
        </div>
     </form>
-    <Table1 articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}/>
+
+
+    <Table1 addArtic={addArtic} articles={arts} page={page} onChangePage={(pageFromInput)=> setPage(pageFromInput)}/>
     {/* {<Table />} */}
     {/* <Articles  /> */}
     {/* здесь ошибка. Почему-то импорты с других файлов багуют и не работают  */}
     </div>
     )
   };
-  export const Table1 = ({articles, page, onChangePage}) =>{
+  export const Table1 = ({articles, page, onChangePage,addArtic}) =>{
 
     const [artPage, setArtPage] = useState('');
+    const [title, setTitle] = useState('');
+
+
 
    useEffect(()=>{
      setArtPage(page)
@@ -127,6 +148,7 @@ const setToDate = (e) =>{
    }
 
     return(
+
     <div>
       <table className='table'>
         <thead className='thead'>
@@ -139,9 +161,27 @@ const setToDate = (e) =>{
         </thead>
         <tbody className='tbody'>
        { articles.map(({author, title, discription, publishedAt,urlToImage},index)=> {
+
+const clickHandler = ()=>{
+  addArtic(title)
+ }
+
+         const onClick= ()=>{
+          setTitle(title)
+         }
+
+         const sendTitle = () =>{
+           console.log(title)
+         }
+         //to={`/details/${index}`}
   return(
-  <tr key={index}>
-    <td className='td'>{title}</td>
+  <tr key={index} onClick={clickHandler}>
+    <td className='td'  onClick={onClick}>
+      <Link to={{
+            pathname: `/details/${index}`,
+            title: title
+        }} exact sendTitle={sendTitle} title={title}> {title} </Link>
+    </td>
     <td className='td'>{author}</td>
     <td className='td'>{publishedAt}</td>
     <td className='td'>
@@ -154,5 +194,25 @@ const setToDate = (e) =>{
       <lable>
         <input  type="number" value={artPage} onChange={handleChange} />
       </lable>
-    </div>)
+      <Switch>
+
+          {/* <Route path="/details">
+            <Details />
+          </Route> */}
+          {/* <Route path={`/details/:id`} exact>
+            <Details
+           title={title}
+            // author={aut}
+            //  title={tit}
+            />
+          </Route> */}
+          <Route
+    path={`/details/:id`}
+    render={(props) => <Details sendTitle={sendTitle} title={title} {...props} /> } />
+
+        </Switch>
+    </div>
+
+    )
   }
+//  <Route path={`/details/${index}`} exact>

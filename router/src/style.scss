@@ -113,6 +113,7 @@ tr{
   left: 0;
   height: 80px;
   border-bottom: 1px solid #540ec4;
+  padding-bottom: 10px;
 }
 .about{
   background-color: rgb(138, 111, 111);
@@ -121,8 +122,16 @@ tr{
   display: flex;
   flex-wrap: wrap;
   border: 1px solid rgb(214, 205, 205);
+
 }
 .header-li{
+  color: black;
   margin: 10px 10px 5px 0;
-  border: 1px solid rgb(214, 205, 205);
+  border-bottom: 1px solid rgb(214, 205, 205);
+}
+.router-link{
+  color: black;
+}
+.active{
+  color: red;
 }
