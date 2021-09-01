@@ -58,10 +58,10 @@ export default function App() {
       <nav className='header'>
     <ul className='header-nav'>
       <li className="header-li">
-        <Link to="/" className="router-link">Home</Link>
+        <Link exact to="/" className="router-link">Home</Link>
       </li>
        <li className="header-li" onClick={handleActive}>
-        <Link to="/about" className="router-link" >About</Link>
+        <Link exact to="/about" className="router-link" >About</Link>
       </li>
       {/* <li className="header-li">
          <Link to="/details/:id" className="router-link"
@@ -82,8 +82,11 @@ export default function App() {
           <Route exact path="/details/:id">
             <Details/>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <SearchBar  />
+          </Route>
+          <Route  path="*">
+            <p/>404 NOT FOUND<p/>
           </Route>
         </Switch>
       </div>
