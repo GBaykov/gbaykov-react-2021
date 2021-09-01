@@ -178,7 +178,7 @@ const clickHandler = ()=>{
   <tr key={index} onClick={clickHandler}>
     <td className='td'  onClick={onClick}>
       <Link to={{
-            pathname: `/details/${index}`,
+            pathname: `/details/${title}`,
             title: title
         }} exact sendTitle={sendTitle} title={title}> {title} </Link>
     </td>
@@ -194,23 +194,13 @@ const clickHandler = ()=>{
       <lable>
         <input  type="number" value={artPage} onChange={handleChange} />
       </lable>
-      <Switch>
+      {/* <Switch>
 
-          {/* <Route path="/details">
-            <Details />
-          </Route> */}
-          {/* <Route path={`/details/:id`} exact>
-            <Details
-           title={title}
-            // author={aut}
-            //  title={tit}
-            />
-          </Route> */}
           <Route
     path={`/details/:id`}
     render={(props) => <Details sendTitle={sendTitle} title={title} {...props} /> } />
 
-        </Switch>
+        </Switch> */}
     </div>
 
     )

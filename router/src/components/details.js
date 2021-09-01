@@ -8,31 +8,17 @@ import { BrowserRouter as Router,
  } from 'react-router-dom';
 import { Articles } from './articles';
 
-export function Details({title, sendTitle}) {
-  sendTitle()
-  //let match = useRouteMatch();
-  //const t =match.title;
-  // console.log(match);
-  console.log(title);
-  //console.log(t);
+export function Details() {
+  let params = useParams();
+  const id = params.id
+  console.log(params);
+  console.log(id);
+
   return (
     <div>
-      {title}
-{/* <div className="card " >
-        <div className="card-img-container" >
-          <img className="card-img" src={`${IMG_URL}/${image}`}/>
-        </div>
-        <div className="card-text-container" >
-          <p className="card-name"><b>Word: </b>{word}</p>
-          <p className="card-translation"><b>Translation: </b> {translation}</p>
-        </div>
-
-      </div> */}
+      {id}
+      <h3>Requested topic ID: {id}</h3>
     </div>
   );
 }
 
-export function Topic() {
-  let { topicId } = useParams();
-  return <h3>Requested topic ID: {topicId}</h3>;
-}

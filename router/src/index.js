@@ -63,14 +63,11 @@ export default function App() {
        <li className="header-li" onClick={handleActive}>
         <Link to="/about" className="router-link" >About</Link>
       </li>
-      <li className="header-li">
-         <Link  to="/details/" className="router-link">Details</Link>
-      </li>
-      <li className="header-li">
+      {/* <li className="header-li">
          <Link to="/details/:id" className="router-link"
          render={()=> <Details />}
          >Details ID</Link>
-      </li>
+      </li> */}
 
     </ul>
   </nav>
@@ -82,10 +79,8 @@ export default function App() {
           {/* <Route path="/details">
             <Details />
           </Route> */}
-          <Route path="/details/:id">
-            <Details
-            // match={match}
-            />
+          <Route exact path="/details/:id">
+            <Details/>
           </Route>
           <Route path="/">
             <SearchBar topArticle={addArtic} />
