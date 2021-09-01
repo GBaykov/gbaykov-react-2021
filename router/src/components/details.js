@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { BrowserRouter as Router,
-  Route,
-  Switch,Link,
-  useRouteMatch,
   useParams
  } from 'react-router-dom';
 import { Articles } from './articles';
@@ -50,23 +47,3 @@ export const Details = () => {
     </div>
   );
 };
-
-
-
-//   return (
-//     <div className="card " >
-
-//       {/* <p className="card-name"><b>Title: </b>{data[0].title}</p> */}
-//       {/* <p className="card-translation"><b>Description: </b>{data[0].description}</p>
-//       <div className="card-img-container" >
-//         <img className="card-img" src={`${data[0].urlToImage}`}/>
-//       </div>
-//       <div className="card-text-container" >
-//       <div className="author_details">Author: {data[0].author}</div>
-//         <div className="date_details">{data[0].publishedAt}</div>
-
-//       </div> */}
-//   </div>
-//   );
-// }
-

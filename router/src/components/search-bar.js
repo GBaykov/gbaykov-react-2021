@@ -7,7 +7,6 @@ import { BrowserRouter as Router,
  } from 'react-router-dom';
 
 import axios from '../services/api';
-import { Details } from './details';
 
 window.React = React;
 //'relevancy','popularity', 'publishedAt'
@@ -15,9 +14,6 @@ window.React = React;
 export const API_KEY = '8bfe103c43b54bbd99756e68af3a7cb3'
 
 export const SearchBar = () => {
-
-
-
   const [searchValue, setSearchValue] = useState('');//useState<string>('') и тд
   const [isLoading, setIsLoading] = useState(false);
   const [arts, setArts] = useState([]);
@@ -28,7 +24,7 @@ export const SearchBar = () => {
   const [tit, setTit] = useState('');
 
   const addArtic = (title)=>{
-    //topArticle(title);
+
     setTit(title)
   }
 
@@ -37,7 +33,7 @@ export const SearchBar = () => {
     e.preventDefault();
 
     setIsLoading(true);
-    try{ //1)ПРОВЕРИТЬ  начиная с эого блока 52.19
+    try{
      const response = await axios.get(
        `v2/everything?q=${searchValue}&apiKey=${API_KEY}&sortBy=${sortBy}&from=${from}&to=${to}&pageSize=10&page=${page}`) //:AxiosResponse<any>
     setArts(response.data.articles);
@@ -112,7 +108,7 @@ const setToDate = (e) =>{
           onChange={()=>{setSortBy('publishedAt')}} />
         </label>
       </div>
-{/* 1:51  конец сортировки. Предложение расширить сортировку */}
+
        <div>
          <p>from</p>
          <input type='date'
@@ -136,8 +132,6 @@ const setToDate = (e) =>{
     const [artPage, setArtPage] = useState('');
     const [title, setTitle] = useState('');
 
-
-
    useEffect(()=>{
      setArtPage(page)
    }, [page])
@@ -148,7 +142,6 @@ const setToDate = (e) =>{
    }
 
     return(
-
     <div>
       <table className='table'>
         <thead className='thead'>
@@ -165,13 +158,10 @@ const setToDate = (e) =>{
 const clickHandler = ()=>{
   addArtic(title)
  }
-
          const onClick= ()=>{
           setTitle(title)
          }
 
-
-         //to={`/details/${index}`}
   return(
   <tr key={index} onClick={clickHandler}>
     <td className='td'  onClick={onClick}>
@@ -189,15 +179,8 @@ const clickHandler = ()=>{
       <lable>
         <input  type="number" value={artPage} onChange={handleChange} />
       </lable>
-      {/* <Switch>
 
-          <Route
-    path={`/details/:id`}
-    render={(props) => <Details sendTitle={sendTitle} title={title} {...props} /> } />
-
-        </Switch> */}
     </div>
 
     )
   }
-//  <Route path={`/details/${index}`} exact>
